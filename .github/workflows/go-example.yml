@@ -1,15 +1,14 @@
-name: Go Build Workflow
+name: HelloWorld
 
-on:
-  push:
-    branches:
-      - main
+on: push
+    
+    
 
 env:
   FILE_NAME: hello-server
 
 jobs:
-  BuildGo:
+  hello-world:
     runs-on: ubuntu-latest
 
     steps:
