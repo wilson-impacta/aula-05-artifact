@@ -1,13 +1,11 @@
 name: Go Build Workflow
 
-
 on:
   push:
     branches:
       - main
 
 env:
-  
   FILE_NAME: hello-server
 
 jobs:
@@ -24,17 +22,18 @@ jobs:
         run: go build ${{ env.FILE_NAME }}.go
 
       
-      - name: Build for Windows
-        run: |
-          GOOS=windows GOARCH=amd64 go build ${{ env.FILE_NAME }}.go
-
-
       - name: Upload artifact for Linux
         uses: actions/upload-artifact@v3
         with:
           name: linux-artifact
-          path: ${{ env.FILE_NAME }}  
           
+
+      
+      - name: Build for Windows
+        run: |
+          GOOS=windows GOARCH=amd64 go build ${{ env.FILE_NAME }}.go
+
+      
       - name: Upload artifact for Windows
         uses: actions/upload-artifact@v3
         with:
