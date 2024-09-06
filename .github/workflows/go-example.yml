@@ -1,0 +1,29 @@
+name: Go Build Workflow
+
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  
+  FILE_NAME: hello-server
+
+jobs:
+  BuildGo:
+    runs-on: ubuntu-latest
+
+    steps:
+      
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      
+      - name: Build for Linux
+        run: go build ${{ env.FILE_NAME }}.go
+
+      
+      - name: Build for Windows
+        run: |
+          GOOS=windows GOARCH=amd64 go build ${{ env.FILE_NAME }}.go
